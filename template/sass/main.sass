@@ -1,9 +1,100 @@
 @import "utilities/normalize"
 
-$color-grey: #fefefe
+$color-grey: #f6f6f6
+$color-light-blue: #f1f1ff
+$color-purple: #595979
 
 body
     background-color: $color-grey
     font-size: 16px
     line-height: 1.2
     font-family: Arial
+    display: flex
+    min-height: 100vh
+    flex-direction: column
+    justify-content: space-between
+    box-sizing: border-box
+
+    *, *::before, *::after
+        box-sizing: inherit
+
+img
+    max-width: 100% 
+
+h1, h2, h3, h4, h5
+    margin-top: 0
+
+.button
+    display: inline-block
+    padding: 10px
+    border-radius: 3px
+    background-color: grey
+    color: #fff
+    font-weight: normal
+    text-decoration: none
+    text-align: center
+    background-color: $color-purple
+
+.main
+    flex: 1
+
+.container
+    padding: 0 15px
+    max-width: 970px
+    margin: auto
+    width: 100%
+
+.logo
+    font-weight: bold
+    font-size: 28px
+    color: $color-purple
+    text-decoration: none
+
+.header,
+.footer
+    padding: 15px
+    background-color: $color-light-blue
+
+.main
+    margin: 20px 0
+
+.products
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    margin: -10px
+
+.card
+    padding: 20px
+    background-color: #fff
+    width: 100%
+    max-width: 300px
+    border-radius: 5px
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .1)
+    margin: 10px
+
+    &__price
+        font-size: 22px
+        color: green
+        font-weight: bold
+
+    &__photo
+        position: relative
+        display: block
+        margin-bottom: 15px
+        background-color: $color-grey
+        height: 300px
+        overflow: hidden
+
+        img
+            position: absolute
+            width: 100%
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            margin: auto
+
+    &__button
+        width: 100%
+        margin-top: 10px
