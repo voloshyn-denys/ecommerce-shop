@@ -1,5 +1,5 @@
 import express from 'express';
-import data from './data.js';
+import { products } from './data.js';
 
 const app = express();
 
@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/products', (req, res) => {
-    res.json(data.products);
+    res.json(products);
 })
 
 const port = process.env.PORT || 5000;
