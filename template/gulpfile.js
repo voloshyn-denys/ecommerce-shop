@@ -11,7 +11,7 @@ const styles = () => {
 
 const watcher = () => {
     watch('./sass/**/*.sass', styles);
-}
+};
 
 exports.sass = styles;
 exports.default = watcher;
