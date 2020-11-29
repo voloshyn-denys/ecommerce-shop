@@ -3,8 +3,8 @@ import s from './Footer.module.sass';
 
 const Footer = () => {
     return (
-        <footer class={s.footer}>
-            <div class="container">
+        <footer className={s.footer}>
+            <div className="container">
                 All rights reserved        
             </div>
         </footer>
