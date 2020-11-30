@@ -1,15 +1,13 @@
 import React from 'react';
-import { withRouter } from "react-router";
 
 const Product = (props) => {
-    const { match } = props;
-    const { productId } = match.params;
+    const { product } = props
 
     return (
         <div className="container">
-            <h2>Product { productId }</h2>
+            <h2>{product.name}</h2>
         </div>
     );
 };
 
-export default withRouter(Product);
+export default Product;

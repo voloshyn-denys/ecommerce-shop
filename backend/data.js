@@ -1,7 +1,7 @@
 export const products = [
     {
         _id: '11231',
-        name: 'Shirts Nike',
+        name: 'Shirts Nike 1',
         photos: [
             'images/photo_1.jpg',
             'images/photo_2.jpg',
@@ -19,7 +19,7 @@ export const products = [
     },
     {
         _id: '2',
-        name: 'Shirts Nike',
+        name: 'Shirts Nike 2',
         photos: [
             'images/photo_1.jpg', 
             'images/photo_2.jpg', 
@@ -37,7 +37,7 @@ export const products = [
     },
     {
         _id: '3',
-        name: 'Shirts Nike',
+        name: 'Shirts Nike 3',
         photos: [
             'images/photo_1.jpg', 
             'images/photo_2.jpg', 

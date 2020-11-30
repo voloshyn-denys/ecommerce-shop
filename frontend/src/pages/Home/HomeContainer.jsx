@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useEffect } from 'react';
-import { getProducts } from '../../redux/productReduser';
+import { getProducts } from '../../redux/homeReduser';
 import Home from './Home';
 
 const HomeContainer = (props) => {
@@ -13,7 +13,7 @@ const HomeContainer = (props) => {
 
 const mapSateToProps = (state) => {  
   return { 
-    products: state.products.items
+    products: state.home.products
   }
 };
 

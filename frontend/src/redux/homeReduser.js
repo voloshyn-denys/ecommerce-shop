@@ -1,21 +1,21 @@
 import { productsAPI } from '../api/api';
 
-const SET_PRODUCT = 'SET_PRODUCT';
+const SET_PRODUCTS = 'SET_PRODUCTS';
 const SET_LOADING_MODE = 'SET_LOADING_MODE';
 const SET_ERROR_MODE = 'SET_ERROR_MODE';
 
-const initialSate = {
-    product: {},
+const initialState = {
+    products: [],
     loadingMode: true,
     errorMode: false
 };
 
-const productReduser = (state = initialSate, action) => {
+const homeReduser = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PRODUCT:
+        case SET_PRODUCTS:
             return {
                 ...state,
-                product: action.product
+                products: action.products
             }
         case SET_LOADING_MODE:
             return {
@@ -32,8 +32,8 @@ const productReduser = (state = initialSate, action) => {
     }
 };
 
-const setProduct = (product) => {
-    return { type: SET_PRODUCT, product };
+const setProductsList = (products) => {
+    return { type: SET_PRODUCTS, products };
 };
 const setLoadingMode = (loadingMode) => {
     return { type: SET_LOADING_MODE, loadingMode };
@@ -42,9 +42,9 @@ const setErrorMode = (errorMode) => {
     return { type: SET_ERROR_MODE, errorMode };
 };
 
-export const getProduct = (productId) => async (dispatch) => {
-    const product = await productsAPI.fetchProductItem(productId);
-    dispatch(setProduct(product));
+export const getProducts = () => async (dispatch) => {
+    const products = await productsAPI.fetchProducts();
+    dispatch(setProductsList(products));
 };
 
-export default productReduser;
+export default homeReduser;
