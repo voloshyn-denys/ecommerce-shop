@@ -3,9 +3,8 @@ export const products = [
         _id: '11231',
         name: 'Shirts Nike 1',
         photos: [
-            'images/photo_1.jpg',
-            'images/photo_2.jpg',
-            'images/photo_3.jpg'
+            '/images/1-1.jpg',
+            '/images/1-2.jpg'
         ],
         category: 'Shirts',
         brand: 'Nike',
@@ -21,9 +20,9 @@ export const products = [
         _id: '2',
         name: 'Shirts Nike 2',
         photos: [
-            'images/photo_1.jpg', 
-            'images/photo_2.jpg', 
-            'images/photo_3.jpg'
+            '/images/2-1.jpg', 
+            '/images/2-2.jpg', 
+            '/images/2-3.jpg'
         ],
         category: 'Shirts',
         brand: 'Nike',
@@ -39,9 +38,9 @@ export const products = [
         _id: '3',
         name: 'Shirts Nike 3',
         photos: [
-            'images/photo_1.jpg', 
-            'images/photo_2.jpg', 
-            'images/photo_3.jpg'
+            '/images/3-1.jpg', 
+            '/images/3-2.jpg', 
+            '/images/3-3.jpg'
         ],
         category: 'Shirts',
         brand: 'Nike',
@@ -52,5 +51,23 @@ export const products = [
             reviews: 47
         },
         description: 'some text'
+    },
+    {
+        _id: '4',
+        name: 'Shirts Nike 4',
+        photos: [
+            '/images/4-1.jpg', 
+            '/images/4-2.jpg', 
+            '/images/4-3.jpg'
+        ],
+        category: 'Shirts',
+        brand: 'Nike',
+        price: 40,
+        quantity: 3,
+        rating: {
+            stars: 5,
+            reviews: 1
+        },
+        description: 'some text 4'
     }
 ];

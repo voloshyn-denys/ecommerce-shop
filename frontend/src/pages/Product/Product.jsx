@@ -1,4 +1,6 @@
 import React from 'react';
+import s from './Product.module.sass';
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
     const { product } = props;
@@ -6,25 +8,26 @@ const Product = (props) => {
 
     return (
         <div className="container">
-            <div>
-                <div>
-                    <h1>{product.name}</h1>
+            <div className={s.product}>
+                <div className={s.product_main}>
+                    <Link to="/" className={s.product_back}>Back to results</Link>
                     {
-                        <div>
+                        <div className={s.product_photo}>
                             <img src={ product.photos[0] } alt={ product.name } />
                         </div>
                     }
-                    {product.description}
                 </div>
-                <div>
-                    <div>
-                        {product.name} <br/>
-                        ${ product.price } <br/>
-                        { status }. Qty: { product.quantity } <br/>
+                <aside className={s.product_aside}>
+                    <div className={s.product_info}>
+                        <h1>{product.name}</h1>
+                        <span className={s.product_price}>${ product.price }</span>
+                        <div>{ status }. Qty: { product.quantity }</div>
                         <div>{ product.rating.reviews } Reviews</div>
-                        <a href="/cart" className="button">Buy</a>
+                        <br/>
+                        {product.description}
+                        <Link to="/cart" className={`${s.product_info_button} button`}>Add to cart</Link>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
     );
