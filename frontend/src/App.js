@@ -1,9 +1,8 @@
-
-import Header from './Header/Header';
-import HomeContainer from './Home/HomeContainer';
-import Footer from './Footer/Footer';
-import Product from './Product/Product';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import HomeContainer from './pages/Home/HomeContainer';
+import Product from './pages/Product/Product';
 
 const App = () => {
   return (

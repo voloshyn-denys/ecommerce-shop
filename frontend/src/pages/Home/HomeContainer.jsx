@@ -1,7 +1,7 @@
-import Home from './Home';
 import { connect } from "react-redux";
 import { useEffect } from 'react';
 import { getProducts } from '../../redux/productReduser';
+import Home from './Home';
 
 const HomeContainer = (props) => {
   useEffect(() => {

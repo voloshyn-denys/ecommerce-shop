@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard/ProductCard';
+import ProductCard from '../../components/ProductCard/ProductCard';
 import s from "./Home.module.sass";
 
 const Home = (props) => {
