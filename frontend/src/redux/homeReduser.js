@@ -6,7 +6,7 @@ const SET_ERROR_MODE = 'SET_ERROR_MODE';
 
 const initialState = {
     products: [],
-    loadingMode: true,
+    loadingMode: false,
     errorMode: false
 };
 
@@ -43,8 +43,15 @@ const setErrorMode = (errorMode) => {
 };
 
 export const getProducts = () => async (dispatch) => {
-    const products = await productsAPI.fetchProducts();
-    dispatch(setProductsList(products));
+    dispatch(setLoadingMode(true));
+    try {
+        const products = await productsAPI.fetchProducts();
+        dispatch(setLoadingMode(false));
+        dispatch(setProductsList(products));
+    } catch {
+        dispatch(setLoadingMode(false));
+        dispatch(setErrorMode(true));
+    }
 };
 
 export default homeReduser;
