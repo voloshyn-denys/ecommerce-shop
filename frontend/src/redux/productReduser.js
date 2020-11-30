@@ -1,31 +1,33 @@
 import { productsAPI } from '../api/api';
 
-const SET_PRODUCT = 'SET_PRODUCT';
-const SET_LOADING_MODE = 'SET_LOADING_MODE';
-const SET_ERROR_MODE = 'SET_ERROR_MODE';
+const PRODUCT_FETCH_SUCCESS = 'PRODUCT_FETCH_SUCCESS';
+const PRODUCT_FETCH_LOADING = 'PRODUCT_FETCH_LOADING';
+const PRODUCT_FETCH_ERROR = 'PRODUCT_FETCH_ERROR';
 
 const initialSate = {
     product: {},
-    loadingMode: false,
+    loadingMode: true,
     errorMode: false
 };
 
 const productReduser = (state = initialSate, action) => {
     switch (action.type) {
-        case SET_PRODUCT:
+        case PRODUCT_FETCH_SUCCESS:
             return {
                 ...state,
+                loadingMode: false,
                 product: action.product
             }
-        case SET_LOADING_MODE:
+        case PRODUCT_FETCH_LOADING:
             return {
                 ...state,
-                loadingMode: action.loadingMode
+                loadingMode: true
             }
-        case SET_ERROR_MODE:
+        case PRODUCT_FETCH_ERROR:
             return {
                 ...state,
-                errorMode: action.errorMode
+                loadingMode: false,
+                errorMode: true
             }
         default:
             return state;
@@ -33,25 +35,22 @@ const productReduser = (state = initialSate, action) => {
 };
 
 const setProduct = (product) => {
-    return { type: SET_PRODUCT, product };
+    return { type: PRODUCT_FETCH_SUCCESS, product };
 };
-const setLoadingMode = (loadingMode) => {
-    return { type: SET_LOADING_MODE, loadingMode };
+const setLoadingMode = () => {
+    return { type: PRODUCT_FETCH_LOADING };
 };
-const setErrorMode = (errorMode) => {
-    return { type: SET_ERROR_MODE, errorMode };
+const setErrorMode = () => {
+    return { type: PRODUCT_FETCH_ERROR };
 };
 
 export const getProduct = (productId) => async (dispatch) => {
-    dispatch(setLoadingMode(true));
-    
     try {
+        dispatch(setLoadingMode());
         const product = await productsAPI.fetchProductItem(productId);
-        dispatch(setLoadingMode(false));
         dispatch(setProduct(product));
     } catch {
-        dispatch(setLoadingMode(false));
-        dispatch(setErrorMode(true));
+        dispatch(setErrorMode());
     }
 };
 

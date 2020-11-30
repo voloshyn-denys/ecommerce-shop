@@ -1,31 +1,33 @@
 import { productsAPI } from '../api/api';
 
-const SET_PRODUCTS = 'SET_PRODUCTS';
-const SET_LOADING_MODE = 'SET_LOADING_MODE';
-const SET_ERROR_MODE = 'SET_ERROR_MODE';
+const PRODUCTS_FETCH_SUCCESS = 'PRODUCTS_FETCH_SUCCESS';
+const PRODUCTS_FETCH_ERROR = 'PRODUCTS_FETCH_ERROR';
+const PRODUCTS_FETCH_LOADING = 'PRODUCTS_FETCH_LOADING';
 
 const initialState = {
     products: [],
-    loadingMode: false,
+    loadingMode: true,
     errorMode: false
 };
 
 const homeReduser = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PRODUCTS:
+        case PRODUCTS_FETCH_SUCCESS:
             return {
                 ...state,
+                loadingMode: false,
                 products: action.products
             }
-        case SET_LOADING_MODE:
+        case PRODUCTS_FETCH_LOADING:
             return {
                 ...state,
-                loadingMode: action.loadingMode
+                loadingMode: true
             }
-        case SET_ERROR_MODE:
+        case PRODUCTS_FETCH_ERROR:
             return {
                 ...state,
-                errorMode: action.errorMode
+                loadingMode: false,
+                errorMode: true
             }
         default:
             return state;
@@ -33,24 +35,22 @@ const homeReduser = (state = initialState, action) => {
 };
 
 const setProductsList = (products) => {
-    return { type: SET_PRODUCTS, products };
+    return { type: PRODUCTS_FETCH_SUCCESS, products };
 };
-const setLoadingMode = (loadingMode) => {
-    return { type: SET_LOADING_MODE, loadingMode };
+const setLoadingMode = () => {
+    return { type: PRODUCTS_FETCH_LOADING };
 };
-const setErrorMode = (errorMode) => {
-    return { type: SET_ERROR_MODE, errorMode };
+const setErrorMode = () => {
+    return { type: PRODUCTS_FETCH_ERROR };
 };
 
 export const getProducts = () => async (dispatch) => {
-    dispatch(setLoadingMode(true));
     try {
+        dispatch(setLoadingMode());
         const products = await productsAPI.fetchProducts();
-        dispatch(setLoadingMode(false));
         dispatch(setProductsList(products));
     } catch {
-        dispatch(setLoadingMode(false));
-        dispatch(setErrorMode(true));
+        dispatch(setErrorMode());
     }
 };
 

@@ -11,13 +11,15 @@ const ProductContainer = (props) => {
 
     useEffect(() => {
         props.getProduct(id)
-    }, []);
+    }, [id]);
     
     if (props.loadingMode) return <Loader />;
     if (props.errorMode) return 'ERROR';
+
     return (
         <Product product={props.product} />
     )
+   
 };
 
 const mapStateToProps = (state) => ({
