@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import Product from './Product';
+import { setNewProduct } from '../../redux/cartReducer';
 import { getProduct } from '../../redux/productReduser';
 import Loader from '../../components/Loader/Loader';
 
 const ProductContainer = (props) => {
+    const {product, setNewProduct, history} = props;
     const { id } = props.match.params;
 
     useEffect(() => {
@@ -17,7 +19,7 @@ const ProductContainer = (props) => {
     if (props.errorMode) return 'ERROR';
 
     return (
-        <Product product={props.product} />
+        <Product product={product} setNewProduct={setNewProduct} history={history} />
     )
    
 };
@@ -29,6 +31,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, { getProduct }),
+    connect(mapStateToProps, { getProduct, setNewProduct }),
     withRouter
 )(ProductContainer);

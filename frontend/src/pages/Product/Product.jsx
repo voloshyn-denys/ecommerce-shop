@@ -2,9 +2,15 @@ import React from 'react';
 import s from './Product.module.sass';
 import { Link } from 'react-router-dom';
 
+
 const Product = (props) => {
-    const { product } = props;
+    const { product, setNewProduct, history } = props;
     const status = product.quantity > 0 ? 'In Stock' : 'Not available';
+
+    const handleAddButtonClick = () =>{
+        setNewProduct(product);
+        history.push('/cart');
+    }
 
     return (
         <div className="container">
@@ -25,7 +31,11 @@ const Product = (props) => {
                         <div>{ product.rating.reviews } Reviews</div>
                         <br/>
                         {product.description}
-                        <Link to="/cart" className={`${s.product_info_button} button`}>Add to cart</Link>
+                        <button
+                            onClick={() => { handleAddButtonClick() } }
+                            className={`${s.product_info_button} button`}>
+                                Add to cart
+                        </button>
                     </div>
                 </aside>
             </div>
