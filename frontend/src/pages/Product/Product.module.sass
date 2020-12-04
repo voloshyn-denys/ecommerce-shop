@@ -1,38 +1,43 @@
-$color-pink: #fc5185
+$color-orange: #ff5235
 
 .product
     display: flex
+    padding-top: 40px
 
     &_main
         flex: 1
 
     &_aside
         flex: none
-        width: 300px
+        width: 470px
+
+    &_title
+        font-size: 24px
+
+    &_description
+        color: grey
 
     &_price
-        color: green
         font-weight: bold
-        font-size: 24px
+        font-size: 22px
         margin-bottom: 10px
         display: inline-block
-
-    &_photo
-        margin-top: 25px
+        margin-top: 10px
 
     &_back
         color: black
         text-decoration: none
 
     &_info
-        position: sticky
-        top: 15px
-        left: 0
-        padding: 15px
-        border-radius: 5px
-        background-color: #fff
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1)
 
         &_button
+            border-color: transparent
+            background-color: $color-orange
             width: 100%
+            max-width: 300px
             margin-top: 15px
+            cursor: pointer
+            transition: all .3s
+
+            &:hover
+                border-color:  $color-orange

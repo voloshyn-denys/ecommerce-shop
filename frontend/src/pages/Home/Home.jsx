@@ -10,7 +10,7 @@ const Home = (props) => {
 
     return (
         <div className="main__content container">
-            <h1 className="main__title">Home</h1>
+            <h1 className="main__title">Products</h1>
             <div className={s.products}>
                 { productElements }
             </div>

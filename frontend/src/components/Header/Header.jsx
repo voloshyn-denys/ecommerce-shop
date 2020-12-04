@@ -11,9 +11,10 @@ const Header = (props) => {
                 <Link to="/" className={s.logo}>eCommerce</Link>
                 <div>
                     <Link to="/cart">
-                        Cart {' '}
-                        { cartCount > 0 && <span>{cartCount}</span> }
+                        <i className={s.header__cart}></i>
                     </Link>
+                    {' '}
+                    { cartCount > 0 && <span className="badge">{cartCount}</span> }
                 </div>
             </div>
         </header>

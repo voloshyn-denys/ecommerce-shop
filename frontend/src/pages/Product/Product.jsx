@@ -5,18 +5,28 @@ import { Link } from 'react-router-dom';
 
 const Product = (props) => {
     const { product, setNewProduct, history } = props;
-    const status = product.quantity > 0 ? 'In Stock' : 'Not available';
 
     const handleAddButtonClick = () =>{
         setNewProduct(product);
         history.push('/cart');
     }
 
-    return (
+    return <>
+        <div className="breadcrumbs">
+            <div className="container">
+                <h3>Product Details</h3>
+                <div>
+                    <Link to="/">Products</Link>
+                    {''} | {''}
+                    <b>Product Details</b>
+                </div>
+            </div>
+        </div>
         <div className="container">
+            
             <div className={s.product}>
                 <div className={s.product_main}>
-                    <Link to="/" className={s.product_back}>Back to results</Link>
+                    
                     {
                         <div className={s.product_photo}>
                             <img src={ product.photos[0] } alt={ product.name } />
@@ -25,12 +35,13 @@ const Product = (props) => {
                 </div>
                 <aside className={s.product_aside}>
                     <div className={s.product_info}>
-                        <h1>{product.name}</h1>
-                        <span className={s.product_price}>${ product.price }</span>
-                        <div>{ status }. Qty: { product.quantity }</div>
+                        <h1 className={s.product_title}>{product.name}</h1>
                         <div>{ product.rating.reviews } Reviews</div>
-                        <br/>
-                        {product.description}
+                        <span className={s.product_price}>${ product.price }</span>
+                        <div className={s.product_description}>{product.description}</div>
+                        
+                        
+                        
                         <button
                             onClick={() => { handleAddButtonClick() } }
                             className={`${s.product_info_button} button`}>
@@ -40,7 +51,7 @@ const Product = (props) => {
                 </aside>
             </div>
         </div>
-    );
+    </>;
 };
 
 export default Product;

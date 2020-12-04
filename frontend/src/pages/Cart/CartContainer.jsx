@@ -4,7 +4,8 @@ import {removeProduct} from '../../redux/cartReducer';
 
 const mapStateToProps = (state) => {
     return {
-        products: state.cart.products
+        products: state.cart.products,
+        priceTotal: state.cart.products.reduce((acc, item) => acc + item.price, 0)
     }
 }
 

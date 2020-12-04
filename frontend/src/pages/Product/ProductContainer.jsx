@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
@@ -8,18 +8,22 @@ import { getProduct } from '../../redux/productReduser';
 import Loader from '../../components/Loader/Loader';
 
 const ProductContainer = (props) => {
-    const {product, setNewProduct, history} = props;
+    const {product, setNewProduct, history, getProduct} = props;
     const { id } = props.match.params;
 
     useEffect(() => {
-        props.getProduct(id)
-    }, [id]);
+        getProduct(id)
+    }, [getProduct, id]);
     
     if (props.loadingMode) return <Loader />;
     if (props.errorMode) return 'ERROR';
 
     return (
-        <Product product={product} setNewProduct={setNewProduct} history={history} />
+        <Product 
+            product={product} 
+            setNewProduct={setNewProduct} 
+            history={history} 
+        />
     )
    
 };

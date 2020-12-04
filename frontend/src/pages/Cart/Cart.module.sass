@@ -1,0 +1,51 @@
+$color-orange: #ff5235
+$color-grey: #f6f6f6
+
+.cart
+    display: flex
+    
+    &_main
+        flex: 1
+
+    &_aside
+        flex: none
+        width: 300px
+
+    &_total
+        &_title
+            text-transform: uppercase
+        &_price
+            font-size: 18px
+
+        &_row
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+.product
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    &:not(:last-child)
+        padding-bottom: 15px
+        margin-bottom: 15px
+        border-bottom: 1px solid $color-grey
+
+
+    &_col
+        flex: 1
+        text-align: center
+
+    &_photo
+        display: inline-block
+        width: 100px
+        height: 100px
+        overflow: hidden
+        margin-right: 20px
+
+    &_remove
+        cursor: pointer
+        transition: color .3s
+        &:hover
+            color: $color-orange

@@ -5,9 +5,11 @@ import Home from './Home';
 import Loader from "../../components/Loader/Loader";
 
 const HomeContainer = (props) => {
+  const { getProducts } = props;
+  
   useEffect(() => {
-    props.getProducts();
-  }, []);
+    getProducts();
+  }, [getProducts]);
 
   if (props.loadingMode) return <Loader />
   if (props.errorMode) return 'ERROR';

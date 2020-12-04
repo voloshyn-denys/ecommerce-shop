@@ -1,25 +1,33 @@
 $color-grey: #f6f6f6
+$color-text: #292929
 
 .card
     padding: 20px
-    background-color: #fff
     width: 100%
     max-width: 300px
-    border-radius: 5px
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, .1)
     margin: 10px
 
+    &__title
+        text-transform: uppercase
+        text-decoration: none
+        color: $color-text
+
+    &__heading
+        margin-bottom: 0
+    
+    &__more
+        text-align: center
+
     &__price
-        font-size: 22px
-        color: green
+        font-size: 18px
         font-weight: bold
 
     &__photo
         position: relative
         display: block
         margin-bottom: 15px
-        background-color: $color-grey
-        height: 300px
+        border: 1px solid $color-grey
+        height: 250px
         overflow: hidden
 
         img
@@ -30,7 +38,3 @@ $color-grey: #f6f6f6
             right: 0
             bottom: 0
             margin: auto
-
-    &__button
-        width: 100%
-        margin-top: 10px
