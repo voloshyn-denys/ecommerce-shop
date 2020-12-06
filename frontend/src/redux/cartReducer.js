@@ -4,16 +4,19 @@ const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const initialState = {
     products: []
 };
+
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            return {
-                ...state,
-                products: [
-                    action.product,
-                    ...state.products.filter(item => item._id !== action.product._id)
-                ]
-            }
+            const existItem = state.products.find(product => 
+                product._id === action.product._id
+            );
+            const updatedProducts = state.products.map(product => 
+                product._id === action.product._id ? action.product : product
+            );
+            const products = existItem ? updatedProducts : [ ...state.products, action.product ];
+            
+            return { ...state, products }
 
         case REMOVE_FROM_CART:
             return {
@@ -29,11 +32,11 @@ const cartReducer = (state = initialState, action) => {
 const addToCart = (product) => ({ type: ADD_TO_CART, product });
 const removeFromCart = (id) => ({ type: REMOVE_FROM_CART, id });
 
-export const setNewProduct = (product) => async (dispatch) => {
-    dispatch(addToCart(product));
+export const setNewProduct = (product, itemsQuantity) => (dispatch) => {   
+    dispatch(addToCart({ ...product, itemsQuantity }));
 };
 
-export const removeProduct = (id) => async (dispatch) => {
+export const removeProduct = (id) => (dispatch) => {
     dispatch(removeFromCart(id));
 };
 

@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import Cart from './Cart';
-import {removeProduct} from '../../redux/cartReducer';
+import {removeProduct, setNewProduct} from '../../redux/cartReducer';
 
 const mapStateToProps = (state) => {
     return {
         products: state.cart.products,
-        priceTotal: state.cart.products.reduce((acc, item) => acc + item.price, 0)
+        priceTotal: state.cart.products.reduce((acc, item) => acc + item.price * item.itemsQuantity, 0)
     }
 }
 
-export default connect(mapStateToProps, { removeProduct })(Cart);
+export default connect(mapStateToProps, { removeProduct, setNewProduct })(Cart);

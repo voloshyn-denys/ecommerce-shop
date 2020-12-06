@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import s from './Cart.module.sass';
+import Counter from '../../components/Counter/Counter'
 
 const Cart = (props) => {
-    const { products, priceTotal, removeProduct } = props;
+    const { products, priceTotal, removeProduct, setNewProduct } = props;
 
     const productsElements = products.map(product => (
         <div key={product._id} className={s.product}> 
@@ -16,7 +17,16 @@ const Cart = (props) => {
                 <b>{product.name} </b>
             </div>
             <div className={s.product_col}>
+                <Counter
+                    defaultValue={product.itemsQuantity}
+                    maxValue={product.quantity} 
+                    onChange={(quantity) => { setNewProduct(product, quantity) }} />
+            </div>
+            <div className={s.product_col}>
                 ${product.price}
+            </div>
+            <div className={s.product_col}>
+                <strong>${product.price * product.itemsQuantity}</strong>
             </div>
             <div className={s.product_col}>
                 <span className={s.product_remove} onClick={() => { removeProduct(product._id)}}>✖</span>
@@ -46,7 +56,7 @@ const Cart = (props) => {
                             <h2>Cart is emty. There isn't any items here.</h2>
                     }
                 </div>
-                <div className={s.cart_aside}>
+                <div className={s.cart_total}>
                     {
                         products.length > 0 && <>
                             <h3 className={s.cart_total_title}><b>Cart total</b></h3>
@@ -55,6 +65,9 @@ const Cart = (props) => {
                                 <div className={s.cart_total_col}>
                                     <b className={s.cart_total_price}>${priceTotal}</b>
                                 </div>
+                            </div>
+                            <div>
+                                <button className={`${s.button} button`}>Proceed to checkout</button>
                             </div>
                             
                         </>

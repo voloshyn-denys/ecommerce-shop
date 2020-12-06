@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './Product.module.sass';
 import { Link } from 'react-router-dom';
+import Counter from '../../components/Counter/Counter'
 
 
 const Product = (props) => {
     const { product, setNewProduct, history } = props;
+    const [ quantity, setQuantity ] = useState(1);
 
     const handleAddButtonClick = () =>{
-        setNewProduct(product);
+        setNewProduct(product, quantity);
         history.push('/cart');
     }
 
@@ -40,7 +42,11 @@ const Product = (props) => {
                         <span className={s.product_price}>${ product.price }</span>
                         <div className={s.product_description}>{product.description}</div>
                         
-                        
+                        <Counter
+                            defaultValue={quantity}
+                            maxValue={product.quantity}
+                            onChange={ (quantity) => { setQuantity(quantity) } }
+                        />
                         
                         <button
                             onClick={() => { handleAddButtonClick() } }

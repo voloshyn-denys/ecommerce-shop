@@ -1,19 +1,26 @@
 $color-orange: #ff5235
-$color-grey: #f6f6f6
+$color-grey: #dedede
+
+.button
+    margin-top: 15px
+    width: 100%
+    background-color: $color-orange
+    border-color: transparent
+    cursor: pointer
 
 .cart
-    display: flex
-    
-    &_main
-        flex: 1
 
-    &_aside
-        flex: none
-        width: 300px
+    &_main
+        margin-bottom: 20px
 
     &_total
+        float: right
+        width: 100%
+        max-width: 300px
+
         &_title
             text-transform: uppercase
+        
         &_price
             font-size: 18px
 
@@ -26,11 +33,9 @@ $color-grey: #f6f6f6
     display: flex
     align-items: center
     justify-content: space-between
-
-    &:not(:last-child)
-        padding-bottom: 15px
-        margin-bottom: 15px
-        border-bottom: 1px solid $color-grey
+    padding-bottom: 15px
+    margin-bottom: 15px
+    border-bottom: 1px solid $color-grey
 
 
     &_col
@@ -49,3 +54,4 @@ $color-grey: #f6f6f6
         transition: color .3s
         &:hover
             color: $color-orange
+            
