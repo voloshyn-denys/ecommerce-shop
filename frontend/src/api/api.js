@@ -2,7 +2,7 @@ import * as axios from 'axios';
 
 export const productsAPI = {
     fetchProductItem: (productId) => {
-        return axios.get(`/api/product/${productId}`)
+        return axios.get(`/api/products/${productId}`)
             .then((res) => res.data);
     },
     fetchProducts: () => {

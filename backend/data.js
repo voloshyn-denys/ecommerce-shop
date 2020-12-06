@@ -1,6 +1,19 @@
+export const users = [
+    {
+        name: 'admin',
+        email: 'admin@gmail.com',
+        password: '123',
+        adminMode: true 
+    },
+    {
+        name: 'Denys',
+        email: 'denys.voloshyn@gmail.com',
+        password: '1233',
+        adminMode: false
+    }
+]
 export const products = [
     {
-        _id: '11231',
         name: 'Shirts Nike 1',
         photos: [
             '/images/1-1.jpg',
@@ -17,7 +30,6 @@ export const products = [
         description: 'some text'
     },
     {
-        _id: '2',
         name: 'Shirts Nike 2',
         photos: [
             '/images/2-1.jpg', 
@@ -35,7 +47,6 @@ export const products = [
         description: 'some text'
     },
     {
-        _id: '3',
         name: 'Shirts Nike 3',
         photos: [
             '/images/3-1.jpg', 
@@ -53,7 +64,6 @@ export const products = [
         description: 'some text'
     },
     {
-        _id: '4',
         name: 'Shirts Nike 4',
         photos: [
             '/images/4-1.jpg', 
