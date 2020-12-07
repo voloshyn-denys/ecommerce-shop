@@ -3,7 +3,12 @@ import s from './Header.module.sass';
 import { Link } from 'react-router-dom';
 
 const Header = (props) => {
-    const { cartCount } = props;
+    const { cartCount, user, signout } = props;
+
+    const onSignoutButton = (evt) => {
+        evt.preventDefault();
+        signout();
+    };
 
     return (
         <header className={s.header}>
@@ -15,6 +20,18 @@ const Header = (props) => {
                     </Link>
                     {' '}
                     { cartCount > 0 && <span className="badge">{cartCount}</span> }
+                    {' '}
+                    {
+                        user 
+                            ?   (
+                                <span>
+                                    {user.name} {' '}
+                                    <a href="#signout" onClick={onSignoutButton}>Sign Out</a>
+                                </span>
+                            )
+                            : <Link to="/signin">Sign In</Link>
+                    }
+                    
                 </div>
             </div>
         </header>
