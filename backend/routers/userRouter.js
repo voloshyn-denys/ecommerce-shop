@@ -1,14 +1,18 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import { users } from '../data.js';
 import User from '../models/userModel.js';
 
 const userRouter = express.Router();
 
-const generateToken = (user) => {
-    // jwt 
-    return 'token';
-};
+const generateToken = ({ _id, name, email, adminMode }) => (
+    jwt.sign(
+        { _id, name, email, adminMode },
+        process.env.JWT_SECRET || 'somejwtsecret',
+        { expiresIn: '30d' }
+    )
+);
 
 userRouter.get('/seed', async (req, res) => {
     await User.remove({});
