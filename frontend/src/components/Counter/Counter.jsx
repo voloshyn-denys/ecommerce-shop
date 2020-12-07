@@ -5,7 +5,7 @@ const Counter = (props) => {
     const {maxValue, onChange, defaultValue = 1} = props;
     const [value, setValue] = useState(defaultValue);
 
-    useEffect(()=>{
+    useEffect( ()=> {
         onChange(value);
     }, [value])
 

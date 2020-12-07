@@ -4,6 +4,9 @@ import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 mongoose.connect('mongodb+srv://test:test@account.dctab.mongodb.net/ecommerce?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,

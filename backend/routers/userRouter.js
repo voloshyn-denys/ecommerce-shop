@@ -10,4 +10,17 @@ userRouter.get('/seed', async (req, res) => {
     res.json(fetchedUsers);
 });
 
+userRouter.post('/signin', async (req, res) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+
+    // TODO: bcrypt compare
+    if (user && user.password === password) {
+        res.send(user);
+        return;
+    };
+
+    res.status(401).send({ message: 'Invalid email or password' });
+});
+
 export default userRouter;

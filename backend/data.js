@@ -1,3 +1,4 @@
+// TODO: bcrypt for password
 export const users = [
     {
         name: 'admin',
