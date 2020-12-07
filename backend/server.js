@@ -7,7 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect('mongodb+srv://test:test@account.dctab.mongodb.net/ecommerce?retryWrites=true&w=majority', {
+const mongodbURL = process.env.MONGODB_URL || 'mongodb+srv://test:test@account.dctab.mongodb.net/ecommerce?retryWrites=true&w=majority';
+mongoose.connect(mongodbURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

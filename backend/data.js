@@ -1,15 +1,16 @@
-// TODO: bcrypt for password
+import bcrypt from "bcryptjs";
+
 export const users = [
     {
-        name: 'admin',
+        name: 'Admin',
         email: 'admin@gmail.com',
-        password: '123',
+        password: bcrypt.hashSync('2468', 8),
         adminMode: true 
     },
     {
-        name: 'Denys',
+        name: 'Denys Voloshyn',
         email: 'denys.voloshyn@gmail.com',
-        password: '1233',
+        password: bcrypt.hashSync('8642', 8),
         adminMode: false
     }
 ]
