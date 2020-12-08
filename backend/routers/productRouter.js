@@ -5,7 +5,7 @@ import Product from '../models/productsModel.js';
 const productRouter = express.Router();
 
 productRouter.get('/seed', async (req, res) => {
-    await Product.remove({});
+    await Product.deleteMany({});
     const fetchedProducts = await Product.insertMany(products);
     res.json(fetchedProducts);
 });

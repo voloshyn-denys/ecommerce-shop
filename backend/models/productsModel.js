@@ -7,10 +7,7 @@ const productSchema = new mongoose.Schema({
     brand: String,
     price: Number,
     quantity: Number,
-    rating: {
-        stars: Number,
-        reviews: Number
-    },
+    rating: { stars: Number, reviews: Number },
     description: String
 }, { timestamps: true });
 

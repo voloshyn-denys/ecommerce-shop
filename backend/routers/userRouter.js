@@ -15,7 +15,7 @@ const generateToken = ({ _id, name, email, adminMode }) => (
 );
 
 userRouter.get('/seed', async (req, res) => {
-    await User.remove({});
+    await User.deleteMany({});
     const fetchedUsers = await User.insertMany(users);
     res.json(fetchedUsers);
 });
