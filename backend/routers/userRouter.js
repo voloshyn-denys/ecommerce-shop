@@ -41,7 +41,7 @@ userRouter.post('/signin', async (req, res) => {
     res.status(401).send({ message: 'Invalid email or password' });
 });
 
-userRouter.post('/signup', async (req, res) => {
+userRouter.post('/register', async (req, res) => {
     const { email, password, name, adminMode = false } = req.body;
 
     const user = await User.create({

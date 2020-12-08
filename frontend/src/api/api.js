@@ -4,6 +4,10 @@ export const userAPI = {
     fetchUser: async (email, password) => {
         const { data } = await axios.post(`/api/users/signin`, { email, password });
         return data;
+    },
+    register : async ({email, password, name}) => {
+        const { data } = await axios.post(`/api/users/register`, { email, password, name });
+        return data;
     }
 }
 

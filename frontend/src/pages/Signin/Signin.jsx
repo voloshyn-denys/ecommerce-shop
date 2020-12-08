@@ -42,7 +42,7 @@ const Signin = (props) => {
                 </div>
                 <button type="submit" className="button">Sign in</button>
                 <div>
-                    If you are not registered, please <Link to='/signup'>Sign up</Link>.
+                    If you are not registered, please <Link to='/register'>Register</Link>.
                 </div>
             </form>
         </div>

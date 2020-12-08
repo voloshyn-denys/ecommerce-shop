@@ -43,4 +43,10 @@ export const signout = () => (dispatch) => {
     localStorage.removeItem('user');
 };
 
+export const register = ({email, password, name}) => async (dispatch) => {
+    const user = await userAPI.register({email, password, name});
+    dispatch(userSuccess(user));
+    localStorage.setItem('user', JSON.stringify(user));
+};
+
 export default userReducer;
