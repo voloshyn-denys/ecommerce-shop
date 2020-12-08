@@ -1,21 +1,3 @@
-import bcrypt from "bcryptjs";
-
-export const users = [
-    {
-        name: 'Admin',
-        email: 'admin@gmail.com',
-        password: bcrypt.hashSync('2468', 8),
-        adminMode: true,
-        cartProducts: []
-    },
-    {
-        name: 'Denys Voloshyn',
-        email: 'denys.voloshyn@gmail.com',
-        password: bcrypt.hashSync('8642', 8),
-        adminMode: false,
-        cartProducts: []
-    }
-]
 export const products = [
     {
         name: 'Shirts Nike 1',
