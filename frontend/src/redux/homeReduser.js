@@ -5,7 +5,7 @@ const PRODUCTS_FETCH_ERROR = 'PRODUCTS_FETCH_ERROR';
 const PRODUCTS_FETCH_LOADING = 'PRODUCTS_FETCH_LOADING';
 
 const initialState = {
-    products: [],
+    product: [],
     loadingMode: true,
     errorMode: false
 };

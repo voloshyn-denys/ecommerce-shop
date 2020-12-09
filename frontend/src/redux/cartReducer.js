@@ -1,9 +1,11 @@
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
-const initialState = {
-    products: []
-};
+const products = localStorage.getItem('cartProducts') 
+    ? JSON.parse(localStorage.getItem('cartProducts'))
+    : [];
+
+const initialState = { products };
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -32,8 +34,11 @@ const cartReducer = (state = initialState, action) => {
 const addToCart = (product) => ({ type: ADD_TO_CART, product });
 const removeFromCart = (id) => ({ type: REMOVE_FROM_CART, id });
 
-export const setNewProduct = (product, itemsQuantity) => (dispatch) => {   
+export const setNewProduct = (product, itemsQuantity) => (dispatch, getState) => {   
+    const { cart } = getState();
     dispatch(addToCart({ ...product, itemsQuantity }));
+
+    localStorage.setItem('cartProducts', JSON.stringify(cart.products))
 };
 
 export const removeProduct = (id) => (dispatch) => {

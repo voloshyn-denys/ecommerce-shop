@@ -11,7 +11,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-    console.log(action);
     switch (action.type) {
         case USER_SUCCESS:
             return { 
