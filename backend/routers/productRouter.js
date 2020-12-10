@@ -1,23 +1,10 @@
 import express from 'express';
-import { products } from '../data.js';
-import Product from '../models/productsModel.js';
+import { initProducts, getAllProducts, getProductById } from '../controllers/productController.js';
 
 const productRouter = express.Router();
 
-productRouter.get('/seed', async (req, res) => {
-    await Product.deleteMany({});
-    const fetchedProducts = await Product.insertMany(products);
-    res.json(fetchedProducts);
-});
-
-productRouter.get('/',  async (req, res) => {
-    const fetchedProducts = await Product.find({});
-    res.json(fetchedProducts);
-});
-
-productRouter.get('/:id', async (req, res) => {
-    const fetchedProduct = await Product.findById(req.params.id);
-    res.json(fetchedProduct);
-});
+productRouter.get('/seed', initProducts);
+productRouter.get('/', getAllProducts);
+productRouter.get('/:id', getProductById);
 
 export default productRouter;
