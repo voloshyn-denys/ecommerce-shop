@@ -1,12 +1,16 @@
-import { connect } from 'react-redux';
 import Cart from './Cart';
-import {removeProduct, setNewProduct} from '../../redux/cartReducer';
+import { inject, observer } from 'mobx-react';
 
-const mapStateToProps = (state) => {
-    return {
-        products: state.cart.products,
-        priceTotal: state.cart.products.reduce((acc, item) => acc + item.price * item.itemsQuantity, 0)
-    }
+const CartContainer = (props) => {
+    const {products, removeProduct, setNewProduct} = props.cartStore;
+    const priceTotal = products.reduce((acc, item) => acc + item.price * item.itemsQuantity, 0)
+
+    return <Cart 
+        products={products} 
+        priceTotal={priceTotal} 
+        removeProduct={removeProduct} 
+        setNewProduct={setNewProduct} 
+    />
 }
 
-export default connect(mapStateToProps, { removeProduct, setNewProduct })(Cart);
+export default inject('cartStore')(observer(CartContainer));

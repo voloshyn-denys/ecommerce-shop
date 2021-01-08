@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.sass';
 import App from './App';
-import store from "./redux/store";
-import { Provider } from 'react-redux';
-// import reportWebVitals from './reportWebVitals';
+import { Provider } from 'mobx-react';
+
+import stores from './stores'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={ store }>
+    <Provider {...stores}>
       <App />
     </Provider>
   </React.StrictMode>,

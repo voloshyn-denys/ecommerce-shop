@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
 import Home from './Home';
 import Loader from "../../components/Loader/Loader";
-import homeStore from "../../stores/homeStore";
-import {observer} from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 
-const store = new homeStore();
-
-const HomeContainer = () => {
-  const { getProducts, loadingMode, errorMode, products } = store;
+const HomeContainer = (props) => {
+  const { getProducts, loadingMode, errorMode, products } = props.homeStore;
 
   useEffect(() => {
     getProducts();
@@ -19,4 +16,4 @@ const HomeContainer = () => {
   return <Home products={products}/>
 };
 
-export default observer(HomeContainer);
+export default inject('homeStore')(observer(HomeContainer));

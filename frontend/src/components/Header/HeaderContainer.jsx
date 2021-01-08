@@ -1,10 +1,12 @@
-import { connect } from "react-redux";
 import Header from './Header';
-import { signout } from '../../redux/userReducer';
+import { inject, observer } from "mobx-react";
 
-const mapStateToProps = (state) => ({
-    cartCount: state.cart.products.length,
-    user: state.users.user
-});
+const HeaderContainer = (props) => {
+    return <Header 
+        user={props.userStore.user} 
+        cartCount={props.cartStore.products.length} 
+        signout={props.userStore.signout} 
+    />
+}
 
-export default connect(mapStateToProps, { signout })(Header);
+export default inject('cartStore', 'userStore')(observer(HeaderContainer));
