@@ -1,27 +1,22 @@
-import { connect } from "react-redux";
 import { useEffect } from 'react';
-import { getProducts } from '../../redux/homeReduser';
 import Home from './Home';
 import Loader from "../../components/Loader/Loader";
+import homeStore from "../../stores/homeStore";
+import {observer} from 'mobx-react'
 
-const HomeContainer = (props) => {
-  const { getProducts } = props;
-  
+const store = new homeStore();
+
+const HomeContainer = () => {
+  const { getProducts, loadingMode, errorMode, products } = store;
+
   useEffect(() => {
     getProducts();
   }, [getProducts]);
 
-  if (props.loadingMode) return <Loader />
-  if (props.errorMode) return 'ERROR';
-  return <Home products={props.products}/>
+  if (loadingMode) return <Loader />
+  if (errorMode) return 'ERROR';
+
+  return <Home products={products}/>
 };
 
-const mapSateToProps = (state) => {  
-  return { 
-    products: state.home.products,
-    loadingMode: state.home.loadingMode,
-    errorMode: state.home.errorMode
-  }
-};
-
-export default connect(mapSateToProps, { getProducts })(HomeContainer);
+export default observer(HomeContainer);

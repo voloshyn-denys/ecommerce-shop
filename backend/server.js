@@ -14,12 +14,12 @@ mongoose.connect(mongodbURL, {
     useCreateIndex: true
 })
 
+app.use('/api/users/', userRouter);
+app.use('/api/products/', productRouter);
+
 app.get('/', (req, res) => {
     res.send('Server has been started.')
 });
-
-app.use('/api/users/', userRouter);
-app.use('/api/products/', productRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

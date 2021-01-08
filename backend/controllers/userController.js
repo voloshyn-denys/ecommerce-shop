@@ -4,12 +4,12 @@ import { generateToken } from '../utilities/userUtilities.js';
 
 export const deleteUserById  = async (req, res) => {
     const deleted =  await User.deleteMany({_id: req.params.id});
-    res.json(deleted);
+    res.send(204).json(deleted);
 };
 
 export const getAllUsers = async (req, res) => {
     const fetchedUsers = await User.find({});
-    res.json(fetchedUsers);
+    res.send(200).json(fetchedUsers);
 };
 
 export const signinUser = async (req, res) => {
@@ -17,7 +17,7 @@ export const signinUser = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && bcrypt.compareSync(password, user.password)) {
-        res.send({
+        res.send(200).send({
             adminMode: user.adminMode,
             password: user.password,
             email: user.email,
@@ -40,7 +40,7 @@ export const registerUser = async (req, res) => {
         password: bcrypt.hashSync(password, 8)
     });
 
-    res.send({
+    res.status(201).send({
         adminMode: user.adminMode,
         password: user.password,
         email: user.email,
